@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "vitest",
+    "test": "vitest src/getCharacterInfo.test.ts",
     "start": "node --experimental-strip-types run.ts",
     "watch": "node --experimental-strip-types --watch run.ts"
   },
