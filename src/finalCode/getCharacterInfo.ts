@@ -6,9 +6,8 @@ const goldenRatio = (1 + Math.sqrt(5)) / 2;
 export const getCharacterInfo = (id: number) =>
   pipe(
     CharacterInfoService.getCharacterById(id),
-    Effect.map(({ birth_year, mass, height, eye_color, hair_color, name }) => ({
+    Effect.map(({ mass, height, eye_color, hair_color, name }) => ({
       name,
-      hasWeirdBirthYear: birth_year.includes("BBY"),
       hasGoodProportions: mass / height < goldenRatio,
       hasSameEyeAndHairColor: hair_color === eye_color,
       isDarthVader: name === "Darth Vader",
@@ -21,7 +20,6 @@ const characterSchema = Schema.Struct({
   mass: Schema.NumberFromString,
   hair_color: Schema.String,
   eye_color: Schema.String,
-  birth_year: Schema.String,
 });
 
 export class CharacterInfoService extends Effect.Tag("CharacterInfoService")<
