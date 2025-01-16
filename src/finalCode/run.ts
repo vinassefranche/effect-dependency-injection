@@ -3,7 +3,7 @@ import { CharacterInfoService, getCharacterInfo } from "./getCharacterInfo.ts";
 
 const result = await pipe(
   getCharacterInfo(1),
-  Effect.provide(CharacterInfoService.dummyLayer),
+  Effect.provide(CharacterInfoService.liveLayer),
   Effect.runPromise
 );
 console.log(result);

@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@effect/platform':
-        specifier: ^0.73.1
-        version: 0.73.1(effect@3.12.4)
       '@types/node':
         specifier: ^22.10.6
         version: 22.10.6
@@ -22,11 +19,6 @@ importers:
         version: 2.1.8(@types/node@22.10.6)
 
 packages:
-
-  '@effect/platform@0.73.1':
-    resolution: {integrity: sha512-aFwHLtTDdWnK0UUGs6Z8QbjVA6XBKp8xzEt4G9lm5c0JALiUrhoWe8e9fpkUMuejF3W0+VeDM3AC+1eglnGQww==}
-    peerDependencies:
-      effect: ^3.12.4
 
   '@esbuild/aix-ppc64@0.21.5':
     resolution: {integrity: sha512-1SDgH6ZSPTlggy1yI6+Dbkiz8xzpHJEVAlF/AM1tHPLsf5STom9rwtjE4hKAF20FfXXNTFqEYXyJNWh1GiZedQ==}
@@ -350,9 +342,6 @@ packages:
     resolution: {integrity: sha512-h5+1OzzfCC3Ef7VbtKdcv7zsstUQwUDlYpUTvjeUsJAssPgLn7QzbboPtL5ro04Mq0rPOsMzl7q5hIbRs2wD1A==}
     engines: {node: '>=8.0.0'}
 
-  find-my-way-ts@0.1.5:
-    resolution: {integrity: sha512-4GOTMrpGQVzsCH2ruUn2vmwzV/02zF4q+ybhCIrw/Rkt3L8KWcycdC6aJMctJzwN4fXD4SD5F/4B9Sksh5rE0A==}
-
   fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
@@ -366,9 +355,6 @@ packages:
 
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
-
-  multipasta@0.2.5:
-    resolution: {integrity: sha512-c8eMDb1WwZcE02WVjHoOmUVk7fnKU/RmUcosHACglrWAuPQsEJv+E8430sXj6jNc1jHw0zrS16aCjQh4BcEb4A==}
 
   nanoid@3.3.8:
     resolution: {integrity: sha512-WNLf5Sd8oZxOm+TzppcYk8gVOgP+l58xNy58D0nbUnOxOWRWvlcCV4kUF7ltmI6PsrLl/BgKEyS4mqsGChFN0w==}
@@ -498,12 +484,6 @@ packages:
     hasBin: true
 
 snapshots:
-
-  '@effect/platform@0.73.1(effect@3.12.4)':
-    dependencies:
-      effect: 3.12.4
-      find-my-way-ts: 0.1.5
-      multipasta: 0.2.5
 
   '@esbuild/aix-ppc64@0.21.5':
     optional: true
@@ -741,8 +721,6 @@ snapshots:
     dependencies:
       pure-rand: 6.1.0
 
-  find-my-way-ts@0.1.5: {}
-
   fsevents@2.3.3:
     optional: true
 
@@ -753,8 +731,6 @@ snapshots:
       '@jridgewell/sourcemap-codec': 1.5.0
 
   ms@2.1.3: {}
-
-  multipasta@0.2.5: {}
 
   nanoid@3.3.8: {}
 

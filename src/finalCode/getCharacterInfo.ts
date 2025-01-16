@@ -1,5 +1,4 @@
-import { FetchHttpClient, HttpClient, HttpClientError } from "@effect/platform";
-import { Effect, Layer, ParseResult, pipe, Schema } from "effect";
+import { Effect, Layer, pipe, Schema } from "effect";
 
 const goldenRatio = (1 + Math.sqrt(5)) / 2;
 
@@ -27,20 +26,17 @@ export class CharacterInfoService extends Effect.Tag("CharacterInfoService")<
   {
     getCharacterById: (
       id: number
-    ) => Effect.Effect<
-      typeof characterSchema.Type,
-      HttpClientError.HttpClientError | ParseResult.ParseError
-    >;
+    ) => Effect.Effect<typeof characterSchema.Type, Error>;
   }
 >() {
   static liveLayer = Layer.succeed(this, {
     getCharacterById: (id) =>
       pipe(
-        HttpClient.get(`https://swapi.dev/api/people/${id}/`),
-        Effect.flatMap((response) => response.json),
-        Effect.flatMap(Schema.decodeUnknown(characterSchema)),
-        Effect.scoped,
-        Effect.provide(FetchHttpClient.layer)
+        Effect.tryPromise(async () => {
+          const response = await fetch(`https://swapi.dev/api/people/${id}/`);
+          return response.json();
+        }),
+        Effect.flatMap(Schema.decodeUnknown(characterSchema))
       ),
   });
   static dummyLayer = Layer.succeed(this, {

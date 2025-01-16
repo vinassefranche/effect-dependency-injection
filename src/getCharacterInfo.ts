@@ -1,4 +1,3 @@
-import { HttpClient } from "@effect/platform";
 import { Effect, pipe, Schema } from "effect";
 
 const goldenRatio = (1 + Math.sqrt(5)) / 2;
@@ -13,14 +12,15 @@ const characterSchema = Schema.Struct({
 
 export const getCharacterInfo = (id: number) =>
   pipe(
-    HttpClient.get(`https://swapi.dev/api/people/${id}/`),
-    Effect.flatMap((response) => response.json),
+    Effect.tryPromise(async () => {
+      const response = await fetch(`https://swapi.dev/api/people/${id}/`);
+      return response.json();
+    }),
     Effect.flatMap(Schema.decodeUnknown(characterSchema)),
     Effect.map(({ mass, height, eye_color, hair_color, name }) => ({
       name,
       hasGoodProportions: mass / height < goldenRatio,
       hasSameEyeAndHairColor: hair_color === eye_color,
       isDarthVader: name === "Darth Vader",
-    })),
-    Effect.scoped
+    }))
   );
